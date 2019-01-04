@@ -15,10 +15,11 @@
     <ion-list>
       <ion-item>
         <ion-label>Enter</ion-label>
-        <ion-input placeholder='You text...' #text></ion-input>
+        <ion-input placeholder='Your text...' #text (keyup)="checkInput(text.value)"></ion-input>
       </ion-item>
     </ion-list>
-    <button block ion-button color="secondary" (click)="generate(text.value)">Generate your QRCode</button>
+    <button block ion-button color="secondary" (click)="generate(text.value)" [disabled]="isDisabled">Generate your QRCode</button>
   </div>
-  <img [src]="qrCodeToView">
+  <img [src]="qrCodeToView" class="qrcode">
+  <span [innerHTML]="buttonContent"></span>
 </ion-content>

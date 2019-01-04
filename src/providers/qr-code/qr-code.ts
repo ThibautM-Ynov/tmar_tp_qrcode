@@ -16,10 +16,10 @@ export class QrCodeProvider {
   }
 
   generate(text: string): Promise<string> {
-    var qrCodeUrl = '';
+    let qrCodeUrl = '';
     QRCode.toDataURL(text, function (err, url) {
       qrCodeUrl = url
-    })
+    });
     return Promise.resolve(qrCodeUrl);
   }
 
