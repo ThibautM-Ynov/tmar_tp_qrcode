@@ -8,11 +8,17 @@
 </ion-header>
 
 <ion-content padding>
-  <h3>Ionic Menu Starter</h3>
-
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will show you the way.
-  </p>
-
-  <button ion-button secondary menuToggle>Toggle Menu</button>
+  <br>
+  <h3 style="text-align:center;">QRCode Generator</h3>
+  <br><br>
+  <div padding>
+    <ion-list>
+      <ion-item>
+        <ion-label>Enter</ion-label>
+        <ion-input placeholder='You text...' #text></ion-input>
+      </ion-item>
+    </ion-list>
+    <button block ion-button color="secondary" (click)="generate(text.value)">Generate your QRCode</button>
+  </div>
+  <img [src]="qrCodeToView">
 </ion-content>
