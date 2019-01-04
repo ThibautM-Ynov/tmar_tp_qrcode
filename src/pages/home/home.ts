@@ -1,6 +1,8 @@
-import {Component, HostListener} from '@angular/core';
-import { NavController } from 'ionic-angular';
-import {QrCodeProvider} from "../../providers/qr-code/qr-code";
+import { Component } from '@angular/core';
+import {NavController} from 'ionic-angular';
+import { QrCodeProvider } from "../../providers/qr-code/qr-code";
+import {SocialSharing} from "@ionic-native/social-sharing";
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'page-home',
@@ -9,9 +11,14 @@ import {QrCodeProvider} from "../../providers/qr-code/qr-code";
 export class HomePage {
   qrCodeToView: string = '';
   isDisabled: boolean = true;
-  shareButton = '';
-  constructor(public navCtrl: NavController, private qrCode: QrCodeProvider) {
-  }
+  isHidden: boolean = true;
+
+  constructor(
+      public navCtrl: NavController,
+      private qrCode: QrCodeProvider,
+      private socialSharing: SocialSharing,
+      private datePipe: DatePipe,
+  ) {}
 
   checkInput(text) {
     if (text === '' || text === null) {
@@ -24,10 +31,15 @@ export class HomePage {
   }
 
   generate(text: string) {
-    console.log(this.qrCode.generate(text));
-    this.qrCode.generate(text).then(res => {
+    let date = this.datePipe.transform(new Date(), 'yyyy-MM-dd HH:mm:ss.SSS');
+    this.qrCode.generate(text, date).then(res => {
       this.qrCodeToView = res;
-      this.shareButton = '<>';
+      this.isHidden = false;
     });
   }
+
+  share(qrcode) {
+    this.socialSharing.share('Look at this !', 'QRCode', qrcode);
+  }
+
 }

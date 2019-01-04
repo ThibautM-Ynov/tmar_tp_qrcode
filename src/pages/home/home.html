@@ -19,7 +19,8 @@
       </ion-item>
     </ion-list>
     <button block ion-button color="secondary" (click)="generate(text.value)" [disabled]="isDisabled">Generate your QRCode</button>
+    <br>
+    <img [src]="qrCodeToView" class="qrcode">
+    <button class="qrcode" ion-button round outline (click)="share(qrCodeToView)" [hidden]="isHidden">Share this !</button>
   </div>
-  <img [src]="qrCodeToView" class="qrcode">
-  <span [innerHTML]="buttonContent"></span>
 </ion-content>
