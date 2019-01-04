@@ -15,6 +15,7 @@ import { SocialSharing } from "@ionic-native/social-sharing";
 import { IonicStorageModule } from '@ionic/storage';
 import { DatePipe } from '@angular/common';
 import {DetailsPage} from "../pages/details/details";
+import {ScanQrPage} from "../pages/scan-qr/scan-qr";
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import {DetailsPage} from "../pages/details/details";
     HomePage,
     ListPage,
     DetailsPage,
+    ScanQrPage,
   ],
   imports: [
     BrowserModule,
@@ -35,6 +37,7 @@ import {DetailsPage} from "../pages/details/details";
     HomePage,
     ListPage,
     DetailsPage,
+    ScanQrPage,
   ],
   providers: [
     StatusBar,
